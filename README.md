@@ -2,7 +2,7 @@
 
 A production-grade RAG (Retrieval Augmented Generation) system built with experiment-driven development.
 
-## 🎯 Project Philosophy
+## Project Philosophy
 
 This isn't just another RAG tutorial. This project demonstrates **engineering judgment** through:
 
@@ -11,7 +11,7 @@ This isn't just another RAG tutorial. This project demonstrates **engineering ju
 - **Intentional removals**: Features that didn't help were removed and documented
 - **Production practices**: Proper configuration, testing, and observability
 
-## 📊 Performance Journey
+## Performance Journey
 
 | Version | Change | Recall@5 | MRR | Latency | Decision |
 |---------|--------|----------|-----|---------|----------|
@@ -19,7 +19,7 @@ This isn't just another RAG tutorial. This project demonstrates **engineering ju
 
 *Table updated as experiments are completed*
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -43,7 +43,7 @@ This isn't just another RAG tutorial. This project demonstrates **engineering ju
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # Clone and install
@@ -58,7 +58,7 @@ export OPENAI_API_KEY=your_key
 python -m tests.test_baseline
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 doc-intelligence/
@@ -78,7 +78,7 @@ doc-intelligence/
 └── tests/                  # Test suite
 ```
 
-## 🔬 Experiments
+## Experiments
 
 Each experiment follows a rigorous process:
 1. **Hypothesis**: What we expect to improve
@@ -88,7 +88,7 @@ Each experiment follows a rigorous process:
 
 See [`experiments/`](experiments/) for full documentation.
 
-## 📈 Evaluation Metrics
+## Evaluation Metrics
 
 ### Retrieval Metrics
 - **Recall@K**: Did we find all relevant documents?
@@ -100,7 +100,7 @@ See [`experiments/`](experiments/) for full documentation.
 - **Faithfulness**: Is answer grounded in context?
 - **Relevance**: Does answer address the question?
 
-## 🛠️ Configuration
+## Configuration
 
 ```yaml
 # configs/default.yaml
@@ -119,7 +119,7 @@ generation:
   model: gpt-4o-mini
 ```
 
-## 📝 Design Decisions
+## Design Decisions
 
 ### Why Fixed Chunking for Baseline?
 Simple and predictable. Establishes clear baseline before trying complex strategies.
@@ -135,7 +135,7 @@ We'll compare against recursive and semantic chunking in Experiment 002.
 - Consistent API
 - Will compare against local embeddings for cost/latency trade-off
 
-## 🎯 Roadmap
+## Roadmap
 
 - [x] v0.1: Baseline RAG pipeline
 - [ ] v0.2: Chunking strategy comparison
@@ -145,6 +145,6 @@ We'll compare against recursive and semantic chunking in Experiment 002.
 - [ ] v0.6: Hallucination detection
 - [ ] v1.0: Production-ready with full evaluation
 
-## 📄 License
+## License
 
 MIT
