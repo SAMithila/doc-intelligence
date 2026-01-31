@@ -1,0 +1,85 @@
+# CloudScale Platform Documentation
+
+## Overview
+
+CloudScale is TechCorp's flagship cloud infrastructure platform. It provides scalable compute, storage, and networking services for enterprises of all sizes. CloudScale supports multiple deployment models including public cloud, private cloud, and hybrid configurations.
+
+## Getting Started
+
+To begin using CloudScale, you need to create an organization account. Visit cloud.techcorp.com and click "Create Account". Enterprise customers should contact their account representative for SSO integration.
+
+After account creation, you'll receive API credentials consisting of an API key and secret. Store these securely - they provide full access to your CloudScale resources.
+
+## Compute Services
+
+### Virtual Machines
+
+CloudScale VMs come in several instance types:
+- Standard: General-purpose workloads, balanced CPU and memory
+- Compute-Optimized: High-performance computing, scientific simulations
+- Memory-Optimized: In-memory databases, real-time analytics
+- GPU-Accelerated: Machine learning training, video rendering
+
+Pricing starts at $0.05 per hour for standard instances. Reserved instances offer up to 60% discount for 1-year commitments.
+
+### Container Service
+
+CloudScale Containers provides managed Kubernetes clusters. The control plane is fully managed at no additional cost. Worker nodes are billed at standard VM rates.
+
+Key features include:
+- Automatic scaling based on workload
+- Integrated service mesh for microservices
+- Native integration with CloudScale Registry
+
+## Storage Services
+
+### Object Storage
+
+CloudScale Object Storage provides unlimited scalable storage for unstructured data. Data is automatically replicated across three availability zones for 99.999999999% durability.
+
+Pricing: $0.023 per GB per month for standard storage. Infrequent access tier available at $0.0125 per GB.
+
+### Block Storage
+
+High-performance block storage for VMs. Available in SSD and HDD tiers. SSD volumes provide up to 64,000 IOPS for demanding database workloads.
+
+### Database Services
+
+Managed databases available for PostgreSQL, MySQL, MongoDB, and Redis. Automatic backups, point-in-time recovery, and read replicas included.
+
+## Networking
+
+### Virtual Private Cloud
+
+Each customer gets an isolated virtual network. Subnets, route tables, and security groups provide fine-grained access control.
+
+### Load Balancing
+
+Application and Network load balancers distribute traffic across instances. SSL termination, health checks, and sticky sessions supported.
+
+### CDN
+
+CloudScale CDN caches content at 150 edge locations worldwide. Average latency improvement of 65% for static assets.
+
+## Security and Compliance
+
+CloudScale is certified for SOC 2 Type II, ISO 27001, HIPAA, and PCI DSS compliance. All data is encrypted at rest using AES-256 and in transit using TLS 1.3.
+
+Identity and Access Management (IAM) supports role-based access control, multi-factor authentication, and integration with enterprise identity providers via SAML 2.0.
+
+## Support Plans
+
+- Basic: Community forums and documentation (free)
+- Developer: Email support with 24-hour response ($29/month)
+- Business: 24/7 phone support with 1-hour response for critical issues ($100/month)
+- Enterprise: Dedicated technical account manager, custom SLAs (contact sales)
+
+## API Reference
+
+The CloudScale API uses REST principles. All endpoints require authentication via API key in the Authorization header.
+
+Base URL: https://api.cloudscale.techcorp.com/v1
+
+Rate limits: 1000 requests per minute for standard accounts, 10000 for enterprise.
+
+Full API documentation available at docs.cloudscale.techcorp.com.

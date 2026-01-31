@@ -1,0 +1,36 @@
+# Document Intelligence RAG Configuration
+# Version: 0.1.0 (Baseline)
+
+chunking:
+  strategy: fixed
+  chunk_size: 512
+  chunk_overlap: 50
+
+embedding:
+  provider: openai
+  model: text-embedding-3-small
+  dimension: 1536
+  batch_size: 100
+
+vector_store:
+  provider: chroma
+  collection_name: documents
+  persist_directory: ./data/chroma
+
+retrieval:
+  top_k: 5
+  score_threshold: 0.0
+
+generation:
+  provider: openai
+  model: gpt-4o-mini
+  temperature: 0.0
+  max_tokens: 1024
+
+evaluation:
+  metrics:
+    - recall_at_k
+    - precision_at_k
+    - mrr
+    - ndcg_at_k
+  k_values: [1, 3, 5, 10]
