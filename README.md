@@ -27,12 +27,12 @@ This isn't just another RAG tutorial. This project demonstrates **engineering ju
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  INGEST          RETRIEVE         GENERATE                  │
-│  ┌─────────┐    ┌─────────┐      ┌─────────┐               │
-│  │ Loader  │ →  │ Embed   │  →   │ Context │               │
-│  │ Chunker │    │ Search  │      │ + LLM   │               │
-│  │ Embed   │    │         │      │         │               │
-│  │ Store   │    │         │      │         │               │
-│  └─────────┘    └─────────┘      └─────────┘               │
+│  ┌─────────┐    ┌─────────┐      ┌─────────┐                │
+│  │ Loader  │ →  │ Embed   │  →   │ Context │                │
+│  │ Chunker │    │ Search  │      │ + LLM   │                │
+│  │ Embed   │    │         │      │         │                │
+│  │ Store   │    │         │      │         │                │
+│  └─────────┘    └─────────┘      └─────────┘                │
 │       │              │                                      │
 │       └──────────────┘                                      │
 │              │                                              │
@@ -47,7 +47,7 @@ This isn't just another RAG tutorial. This project demonstrates **engineering ju
 
 ```bash
 # Clone and install
-git clone https://github.com/your-username/doc-intelligence.git
+git clone https://github.com/SAMithila/doc-intelligence.git
 cd doc-intelligence
 pip install -e .
 
