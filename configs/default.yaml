@@ -1,8 +1,8 @@
 # Document Intelligence RAG Configuration
-# Version: 0.1.0 (Baseline)
+# Version: 0.2.0 (Baseline)
 
 chunking:
-  strategy: fixed
+  strategy: recursive
   chunk_size: 512
   chunk_overlap: 50
 
