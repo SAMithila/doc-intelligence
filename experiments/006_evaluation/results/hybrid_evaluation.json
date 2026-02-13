@@ -1,0 +1,260 @@
+{
+  "name": "hybrid",
+  "overall_accuracy": 0.8333333333333334,
+  "easy_accuracy": 0.9,
+  "vague_accuracy": 0.6,
+  "hard_accuracy": 1.0,
+  "correct": {
+    "easy": 9,
+    "vague": 6,
+    "hard": 10,
+    "total": 25
+  },
+  "counts": {
+    "easy": 10,
+    "vague": 10,
+    "hard": 10
+  },
+  "results": [
+    {
+      "query_id": "easy_01",
+      "category": "easy",
+      "query": "What was TechCorp's total revenue in 2024?",
+      "expected_answer": "$4.2 billion",
+      "actual_answer": "TechCorp's total revenue in 2024 was $4.2 billion.",
+      "correct": true
+    },
+    {
+      "query_id": "easy_02",
+      "category": "easy",
+      "query": "What was TechCorp's Q3 2024 revenue?",
+      "expected_answer": "$1.15 billion",
+      "actual_answer": "TechCorp's Q3 2024 revenue was $1.15 billion.",
+      "correct": true
+    },
+    {
+      "query_id": "easy_03",
+      "category": "easy",
+      "query": "How many employees does TechCorp have?",
+      "expected_answer": "12,500",
+      "actual_answer": "TechCorp has 12,500 employees globally.",
+      "correct": true
+    },
+    {
+      "query_id": "easy_04",
+      "category": "easy",
+      "query": "What was the SecureNet acquisition price?",
+      "expected_answer": "$320 million",
+      "actual_answer": "The SecureNet acquisition price was $320 million.",
+      "correct": true
+    },
+    {
+      "query_id": "easy_05",
+      "category": "easy",
+      "query": "How much does CloudScale object storage cost per GB?",
+      "expected_answer": "$0.023 per GB per month",
+      "actual_answer": "CloudScale object storage costs $0.023 per GB per month for standard storage and $0.0125 per GB for the infrequent access tier.",
+      "correct": true
+    },
+    {
+      "query_id": "easy_06",
+      "category": "easy",
+      "query": "What security certifications does CloudScale have?",
+      "expected_answer": "SOC 2 Type II, ISO 27001, HIPAA, PCI DSS",
+      "actual_answer": "CloudScale is certified for SOC 2 Type II, ISO 27001, HIPAA, and PCI DSS compliance.",
+      "correct": true
+    },
+    {
+      "query_id": "easy_07",
+      "category": "easy",
+      "query": "What was TechCorp's Q1 2024 revenue?",
+      "expected_answer": "$920 million",
+      "actual_answer": "TechCorp's Q1 2024 revenue was $920 million.",
+      "correct": true
+    },
+    {
+      "query_id": "easy_08",
+      "category": "easy",
+      "query": "What is the maximum size of a CloudScale compute instance?",
+      "expected_answer": "64 vCPUs and 256GB RAM",
+      "actual_answer": "The provided context does not contain information about the maximum size of a CloudScale compute instance.",
+      "correct": false
+    },
+    {
+      "query_id": "easy_09",
+      "category": "easy",
+      "query": "What was TechCorp's R&D spending in 2024?",
+      "expected_answer": "$240 million",
+      "actual_answer": "TechCorp's R&D spending in 2024 was $240 million.",
+      "correct": true
+    },
+    {
+      "query_id": "easy_10",
+      "category": "easy",
+      "query": "What percentage of TechCorp revenue comes from North America?",
+      "expected_answer": "62%",
+      "actual_answer": "62% of TechCorp revenue comes from North America.",
+      "correct": true
+    },
+    {
+      "query_id": "vague_01",
+      "category": "vague",
+      "query": "Q3 revenue",
+      "expected_answer": "$1.15 billion",
+      "actual_answer": "Q3 2024 revenue was $1.15 billion.",
+      "correct": true
+    },
+    {
+      "query_id": "vague_02",
+      "category": "vague",
+      "query": "storage pricing",
+      "expected_answer": "$0.023 per GB",
+      "actual_answer": "The pricing for CloudScale Object Storage is $0.023 per GB per month for standard storage and $0.0125 per GB for the infrequent access tier. For CloudScale VMs, pricing starts at $0.05 per hour for standard instances.",
+      "correct": true
+    },
+    {
+      "query_id": "vague_03",
+      "category": "vague",
+      "query": "employee count",
+      "expected_answer": "12,500",
+      "actual_answer": "TechCorp ended 2024 with 12,500 employees globally.",
+      "correct": true
+    },
+    {
+      "query_id": "vague_04",
+      "category": "vague",
+      "query": "acquisition cost",
+      "expected_answer": "$320 million",
+      "actual_answer": "The acquisition cost of SecureNet was $320 million.",
+      "correct": true
+    },
+    {
+      "query_id": "vague_05",
+      "category": "vague",
+      "query": "security compliance",
+      "expected_answer": "SOC 2, ISO 27001, HIPAA, PCI DSS",
+      "actual_answer": "CloudScale is certified for SOC 2 Type II, ISO 27001, HIPAA, and PCI DSS compliance. All data is encrypted at rest using AES-256 and in transit using TLS 1.3. Additionally, Identity and Access Management (IAM) supports role-based access control, multi-factor authentication, and integration with enterprise identity providers via SAML 2.0.",
+      "correct": true
+    },
+    {
+      "query_id": "vague_06",
+      "category": "vague",
+      "query": "compute instances",
+      "expected_answer": "Up to 64 vCPUs, 256GB RAM",
+      "actual_answer": "Compute instances refer to the Compute-Optimized instance type within the CloudScale VMs, which are designed for high-performance computing and scientific simulations.",
+      "correct": false
+    },
+    {
+      "query_id": "vague_07",
+      "category": "vague",
+      "query": "R&D budget",
+      "expected_answer": "$240 million",
+      "actual_answer": "The R&D budget for Q1 2024 was $210 million.",
+      "correct": false
+    },
+    {
+      "query_id": "vague_08",
+      "category": "vague",
+      "query": "regional revenue split",
+      "expected_answer": "North America 62%, Europe 28%, Asia-Pacific 10%",
+      "actual_answer": "The regional revenue split is as follows: \n\n- North America contributed 62% of total revenue, amounting to $2.6 billion.\n- Europe, Middle East, and Africa (EMEA) represented 24% of revenue, totaling $1.0 billion.\n- Asia-Pacific grew to $600 million, which is 14% of total revenue. \n\n(Note: The percentages add up to 100% based on the provided figures.)",
+      "correct": true
+    },
+    {
+      "query_id": "vague_09",
+      "category": "vague",
+      "query": "quarterly growth",
+      "expected_answer": "Q1 $920M, Q2 $1.05B, Q3 $1.15B, Q4 $1.08B",
+      "actual_answer": "The context does not provide specific information about the quarterly growth rates for each quarter. Therefore, I cannot answer the question about quarterly growth.",
+      "correct": false
+    },
+    {
+      "query_id": "vague_10",
+      "category": "vague",
+      "query": "data center locations",
+      "expected_answer": "12 regions across North America, Europe, and Asia-Pacific",
+      "actual_answer": "The context does not provide specific information about the locations of the data centers.",
+      "correct": false
+    },
+    {
+      "query_id": "hard_01",
+      "category": "hard",
+      "query": "Which quarter had the highest revenue in 2024 and by how much did it exceed Q1?",
+      "expected_answer": "Q3 with $1.15B, exceeded Q1 by $230 million",
+      "actual_answer": "Q3 2024 had the highest revenue in 2024, reaching $1.15 billion. It exceeded Q1 2024 revenue of $920 million by $230 million.",
+      "correct": true
+    },
+    {
+      "query_id": "hard_02",
+      "category": "hard",
+      "query": "What is the cost difference between standard and infrequent access storage?",
+      "expected_answer": "$0.023 - $0.0125 = $0.0105 per GB difference",
+      "actual_answer": "The cost difference between standard storage and infrequent access storage is $0.0105 per GB per month, with standard storage priced at $0.023 per GB and infrequent access storage at $0.0125 per GB.",
+      "correct": true
+    },
+    {
+      "query_id": "hard_03",
+      "category": "hard",
+      "query": "How many new employees did TechCorp hire in 2024?",
+      "expected_answer": "2,300 (from 10,200 to 12,500)",
+      "actual_answer": "TechCorp hired 2,300 new employees in 2024, increasing their total from 10,200 in 2023 to 12,500.",
+      "correct": true
+    },
+    {
+      "query_id": "hard_04",
+      "category": "hard",
+      "query": "What percentage of total revenue came from cloud services?",
+      "expected_answer": "50% ($2.1B of $4.2B)",
+      "actual_answer": "To find the percentage of total revenue that came from cloud services, we can use the following information from the context:\n\n- Total revenue for the year: $4.2 billion\n- Total revenue from cloud services: $2.1 billion\n\nNow, we can calculate the percentage:\n\n\\[\n\\text{Percentage of revenue from cloud services} = \\left( \\frac{\\text{Cloud services revenue}}{\\text{Total revenue}} \\right) \\times 100\n\\]\n\n\\[\n\\text{Percentage of revenue from cloud services} = \\left( \\frac{2.1 \\text{ billion}}{4.2 \\text{ billion}} \\right) \\times 100 = 50\\%\n\\]\n\nTherefore, the percentage of total revenue that came from cloud services is **50%**.",
+      "correct": true
+    },
+    {
+      "query_id": "hard_05",
+      "category": "hard",
+      "query": "Compare Q2 and Q4 revenue - which was higher?",
+      "expected_answer": "Q4 ($1.08B) was higher than Q2 ($1.05B) by $30 million",
+      "actual_answer": "Q2 revenue was $1.05 billion, while Q4 revenue was $1.08 billion. Therefore, Q4 revenue was higher than Q2 revenue.",
+      "correct": true
+    },
+    {
+      "query_id": "hard_06",
+      "category": "hard",
+      "query": "If I need HIPAA compliance, what CloudScale products can I use?",
+      "expected_answer": "All CloudScale services are HIPAA certified",
+      "actual_answer": "You can use CloudScale's services as they are certified for HIPAA compliance. However, the context does not specify which specific products or services are HIPAA compliant, so it is advisable to consult with CloudScale directly or refer to their documentation for detailed information on which products meet HIPAA requirements.",
+      "correct": true
+    },
+    {
+      "query_id": "hard_07",
+      "category": "hard",
+      "query": "What was the year-over-year revenue growth rate?",
+      "expected_answer": "23% increase from previous year",
+      "actual_answer": "The year-over-year revenue growth rate for TechCorp in fiscal year 2024 was 23%.",
+      "correct": true
+    },
+    {
+      "query_id": "hard_08",
+      "category": "hard",
+      "query": "How much would 1TB of standard storage cost per year on CloudScale?",
+      "expected_answer": "$0.023 * 1000GB * 12 months = $276 per year",
+      "actual_answer": "To calculate the cost of 1TB of standard storage per year on CloudScale:\n\n1. **Convert TB to GB**: 1TB = 1024GB\n2. **Cost per GB per month**: $0.023\n3. **Monthly cost for 1TB**: 1024GB * $0.023 = $23.552\n4. **Annual cost**: $23.552 * 12 = $282.624\n\nTherefore, the cost of 1TB of standard storage per year on CloudScale would be approximately **$282.62**.",
+      "correct": true
+    },
+    {
+      "query_id": "hard_09",
+      "category": "hard",
+      "query": "What new engineering centers did TechCorp open and where?",
+      "expected_answer": "Austin, Texas and Dublin, Ireland",
+      "actual_answer": "TechCorp opened new engineering centers in Austin, Texas and Dublin, Ireland.",
+      "correct": true
+    },
+    {
+      "query_id": "hard_10",
+      "category": "hard",
+      "query": "What is the projected revenue range for 2025?",
+      "expected_answer": "$4.8 to $5.0 billion",
+      "actual_answer": "The projected revenue range for 2025 is between $5.0 billion and $5.3 billion.",
+      "correct": true
+    }
+  ]
+}
