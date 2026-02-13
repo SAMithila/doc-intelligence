@@ -1,4 +1,4 @@
-"""Test hybrid search from Day 3."""
+"""Test hybrid search retriever against simple semantic search retriever"""
 import os
 from docint.ingest.loaders import TextLoader
 from docint.ingest.chunkers import RecursiveChunker

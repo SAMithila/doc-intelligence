@@ -1,0 +1,25 @@
+{
+  "approaches": [
+    {
+      "name": "semantic",
+      "overall": 0.8333333333333334,
+      "easy": 0.9,
+      "vague": 0.6,
+      "hard": 1.0
+    },
+    {
+      "name": "hybrid",
+      "overall": 0.8333333333333334,
+      "easy": 0.9,
+      "vague": 0.6,
+      "hard": 1.0
+    },
+    {
+      "name": "hyde",
+      "overall": 0.8333333333333334,
+      "easy": 0.9,
+      "vague": 0.7,
+      "hard": 0.9
+    }
+  ]
+}
