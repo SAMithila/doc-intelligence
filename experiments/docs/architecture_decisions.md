@@ -19,7 +19,7 @@ Why I built things the way I did.
 If I needed to scale to millions of docs, I'd switch to FAISS with a custom persistence layer.
 
 
-# Chunk Size: 512 Characters
+## Chunk Size: 512 Characters
 #### Decision: 512 chars with 50 char overlap
 
 ### What I tried:
