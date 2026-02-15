@@ -36,3 +36,21 @@ Query: "What was Q3 revenue?"
 
 ### Tradeoff: 
 512 means more chunks (17 vs 8 at 1024), slightly higher embedding cost. Worth it for retrieval quality.
+
+## Recursive over Fixed Chunking
+#### Decision: Use recursive text splitter
+
+### The bug that forced this:
+Fixed chunking at 512 chars split "## Q3 2024 Performance" header from the "$1.15 billion" revenue figure. Query failed because semantic search couldn't connect "Q3 revenue" to a chunk that started with "ervices revenue hit..."
+
+The word "services" literally got cut in half.
+
+### Why recursive works:
+1. First tries to split on "\n\n" (section breaks)
+2. Then "\n" (paragraphs)
+3. Then ". " (sentences)
+4. Only splits mid-word as last resort
+
+### Tradeoff: 
+Variable chunk sizes. Some chunks are 200 chars, some are 500. But section integrity is preserved.
+
