@@ -54,3 +54,14 @@ The word "services" literally got cut in half.
 ### Tradeoff: 
 Variable chunk sizes. Some chunks are 200 chars, some are 500. But section integrity is preserved.
 
+# SimpleRetriever over MMR
+### Decision: Top-k similarity, no diversity reranking
+
+### Why not MMR (Maximal Marginal Relevance):
+1. MMR optimizes for diversity - useful when you want varied results
+2. My use case wants the MOST relevant chunks, even if similar
+3. For Q&A, I'd rather have 5 chunks all about Q3 revenue than 5 diverse chunks
+
+#### When I'd use MMR: 
+If building a research assistant where users want to explore different aspects of a topic.
+
