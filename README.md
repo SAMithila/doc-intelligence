@@ -1,150 +1,94 @@
-# Document Intelligence Platform
+# Doc Intelligence
 
-A production-grade RAG (Retrieval Augmented Generation) system built with experiment-driven development.
+RAG system for document Q&A. Built this to learn what actually works in retrieval systems vs. what's just hype.
 
-## Project Philosophy
+## What I Learned
 
-This isn't just another RAG tutorial. This project demonstrates **engineering judgment** through:
+- **Chunking matters more than I expected.** Fixed-size chunking broke my Q3 revenue query by splitting "## Q3 2024" from "$1.15 billion". Spent 2 hours debugging before I realized the chunk literally started with "ervices" (cut mid-word). Recursive chunking fixed it.
 
-- **Measured improvements**: Every feature is evaluated against baseline metrics
-- **Documented trade-offs**: Design decisions explained with data
-- **Intentional removals**: Features that didn't help were removed and documented
-- **Production practices**: Proper configuration, testing, and observability
+- **Hybrid search helps, but not dramatically.** Added BM25 keyword matching alongside semantic search. Got +6% accuracy. Worth keeping for the minimal overhead.
 
-## Performance Journey
+- **Reranking is too slow.** Built an LLM-based reranker, got excited when it moved the correct chunk to #1. Then measured: 5 seconds per query. Killed it.
 
-| Version | Change | Recall@5 | MRR | Latency | Decision |
-|---------|--------|----------|-----|---------|----------|
-| v0.1 | Baseline (fixed chunking, semantic search) | TBD | TBD | TBD | Baseline |
+- **HyDE helps vague queries.** Short queries like "Q3 revenue" went from 50% to 70% accuracy with query expansion. But adds 1.5s latency, so I only use it conditionally.
 
-*Table updated as experiments are completed*
+- **Easy tests are worthless.** For 5 days I kept getting 100% accuracy and feeling good. Then I built proper evaluation with vague and multi-hop queries. Real accuracy was 77%. Always test on hard cases.
 
-## Architecture
+## Results
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    RAG Pipeline v0.1                        │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  INGEST          RETRIEVE         GENERATE                  │
-│  ┌─────────┐    ┌─────────┐      ┌─────────┐                │
-│  │ Loader  │ →  │ Embed   │  →   │ Context │                │
-│  │ Chunker │    │ Search  │      │ + LLM   │                │
-│  │ Embed   │    │         │      │         │                │
-│  │ Store   │    │         │      │         │                │
-│  └─────────┘    └─────────┘      └─────────┘                │
-│       │              │                                      │
-│       └──────────────┘                                      │
-│              │                                              │
-│       ┌──────▼──────┐                                       │
-│       │  ChromaDB   │                                       │
-│       └─────────────┘                                       │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
+Tested on 30 queries (easy, vague, hard):
+
+| Approach | Overall | Easy | Vague | Hard |
+|----------|---------|------|-------|------|
+| Semantic only | 77% | 90% | 50% | 90% |
+| + Hybrid search | 83% | 90% | 60% | 100% |
+| + HyDE (vague only) | 83% | 90% | 70% | 90% |
 
 ## Quick Start
-
 ```bash
-# Clone and install
 git clone https://github.com/SAMithila/doc-intelligence.git
 cd doc-intelligence
 pip install -e .
 
-# Set API key
 export OPENAI_API_KEY=your_key
 
-# Run test
-python -m tests.test_baseline
+# Run evaluation
+python tests/test_evaluation.py
+
+# Or try the UI
+streamlit run app/streamlit_app.py
 ```
+
+## Features
+
+- **Hybrid retrieval** - BM25 + semantic search with reciprocal rank fusion
+- **Query expansion** - HyDE for vague queries
+- **Hallucination detection** - Verifies answers are grounded in context
+- **FastAPI + Streamlit** - REST API and demo UI
 
 ## Project Structure
-
 ```
-doc-intelligence/
-├── src/docint/
-│   ├── config.py           # Typed configuration
-│   ├── pipeline.py         # Main RAG pipeline
-│   ├── ingest/             # Document loading & chunking
-│   ├── embeddings/         # Embedding providers
-│   ├── store/              # Vector store implementations
-│   ├── retrieval/          # Retrieval strategies
-│   ├── generation/         # LLM generation
-│   └── evaluation/         # Metrics & evaluation
-├── experiments/            # Documented experiments
-│   └── 001_baseline/       # Baseline metrics
-├── configs/                # YAML configurations
-├── eval_data/              # Test documents & Q&A pairs
-└── tests/                  # Test suite
+src/docint/
+├── ingest/        # Chunking (fixed, recursive)
+├── retrieval/     # Semantic, BM25, hybrid, reranking, HyDE
+├── generation/    # LLM answer generation
+├── verification/  # Hallucination detection
+├── evaluation/    # Metrics and testing
+└── api/           # FastAPI endpoints
+
+experiments/       # What I tried, what worked, what didn't
+app/               # Streamlit demo
 ```
 
 ## Experiments
 
-Each experiment follows a rigorous process:
-1. **Hypothesis**: What we expect to improve
-2. **Implementation**: Code changes
-3. **Measurement**: Metrics before/after
-4. **Decision**: Keep, modify, or remove
+Each folder in `experiments/` documents what I tried:
 
-See [`experiments/`](experiments/) for full documentation.
+| Experiment | Result | Decision |
+|------------|--------|----------|
+| 001_baseline | 80% accuracy, Q3 query failed | Found chunking bug |
+| 002_chunking | Recursive fixed the failure | Keep |
+| 003_hybrid | +6% accuracy | Keep |
+| 004_reranking | +5s latency, no accuracy gain | Rejected |
+| 005_hyde | +20% on vague queries | Keep (conditional) |
+| 006_evaluation | Built proper test framework | Essential |
+| 007_hallucination | Catches made-up facts | Keep |
 
-## Evaluation Metrics
+See `docs/architecture_decisions.md` for why I made specific choices (ChromaDB vs FAISS, chunk size, etc.)
 
-### Retrieval Metrics
-- **Recall@K**: Did we find all relevant documents?
-- **Precision@K**: How much noise in results?
-- **MRR**: Where does first relevant doc appear?
-- **NDCG@K**: How well are relevant docs ranked?
+## What I'd Do Differently
 
-### Generation Metrics (planned)
-- **Faithfulness**: Is answer grounded in context?
-- **Relevance**: Does answer address the question?
+1. **Start with hard test cases** - Not easy ones that always pass
+2. **Measure latency from day 1** - Would've caught reranking issue earlier
+3. **Build evaluation first** - Before adding features
 
-## Configuration
+## Screenshots
 
-```yaml
-# configs/default.yaml
-chunking:
-  strategy: fixed      # fixed | recursive | semantic
-  chunk_size: 512
-  chunk_overlap: 50
+FastAPI docs at `/docs`:
+- Query endpoint with groundedness verification
+- Health check and stats
 
-embedding:
-  model: text-embedding-3-small
-
-retrieval:
-  top_k: 5
-
-generation:
-  model: gpt-4o-mini
-```
-
-## Design Decisions
-
-### Why Fixed Chunking for Baseline?
-Simple and predictable. Establishes clear baseline before trying complex strategies.
-We'll compare against recursive and semantic chunking in Experiment 002.
-
-### Why ChromaDB?
-- Embedded (no separate server)
-- Good for development and small-to-medium scale
-- Easy to swap out later if needed
-
-### Why OpenAI Embeddings?
-- High quality out of the box
-- Consistent API
-- Will compare against local embeddings for cost/latency trade-off
-
-## Roadmap
-
-- [x] v0.1: Baseline RAG pipeline
-- [ ] v0.2: Chunking strategy comparison
-- [ ] v0.3: Hybrid search (BM25 + semantic)
-- [ ] v0.4: Cross-encoder reranking
-- [ ] v0.5: HyDE query expansion
-- [ ] v0.6: Hallucination detection
-- [ ] v1.0: Production-ready with full evaluation
-
-## License
-
-MIT
+Streamlit UI:
+- Ask questions, see sources
+- Groundedness confidence score
+- Latency metrics
