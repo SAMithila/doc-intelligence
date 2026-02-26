@@ -24,6 +24,17 @@ Tested on 30 queries (easy, vague, hard):
 | + Hybrid search | 83% | 90% | 60% | 100% |
 | + HyDE (vague only) | 83% | 90% | 70% | 90% |
 
+## Performance
+
+| Metric | Value |
+|--------|-------|
+| Indexing time | 2.1s |
+| Query latency (P50) | 1,850ms |
+| Query latency (P95) | 2,400ms |
+| Retrieval accuracy | 83% |
+
+Bottleneck is LLM generation (~1,800ms). Retrieval is fast (~300ms).
+
 ## Quick Start
 ```bash
 git clone https://github.com/SAMithila/doc-intelligence.git
