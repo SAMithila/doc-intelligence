@@ -10,10 +10,10 @@ A production-oriented RAG system built with experiment-driven development. Focus
 | **Indexing time** | 2.67s |
 | **Query latency (P50)** | 1,824ms |
 | **Query latency (P95)** | 6,282ms |
-| **Retrieval (mean)** | 269ms |
-| **Generation (mean)** | 1,733ms |
+| **Retrieval (mean)** | 1,062ms |
+| **Generation (mean)** | 1,674ms |
 
-Bottleneck is LLM generation (~1.7s). Retrieval is fast (~270ms).
+Bottleneck is LLM generation (~1.7s). Retrieval is ~1s.
 
 ## What I Built & Learned
 
