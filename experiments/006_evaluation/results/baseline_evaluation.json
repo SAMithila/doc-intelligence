@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-02-13 16:06:28",
+  "timestamp": "2026-02-26 22:15:14",
   "config_name": "recursive_semantic",
   "total_queries": 30,
-  "overall_accuracy": 0.7666666666666667,
+  "overall_accuracy": 0.8333333333333334,
   "easy_accuracy": 0.9,
-  "vague_accuracy": 0.5,
-  "hard_accuracy": 0.9,
-  "avg_retrieval_time_ms": 308.57153480016376,
-  "avg_generation_time_ms": 1592.585312533265,
-  "avg_total_time_ms": 1901.2022972106934,
-  "avg_keyword_match_rate": 0.6472222222222223,
-  "avg_top_chunk_score": 0.5774417599042256,
+  "vague_accuracy": 0.6,
+  "hard_accuracy": 1.0,
+  "avg_retrieval_time_ms": 268.5244792296241,
+  "avg_generation_time_ms": 1733.3164166348677,
+  "avg_total_time_ms": 2001.8938064575195,
+  "avg_keyword_match_rate": 0.6583333333333334,
+  "avg_top_chunk_score": 0.5774428884188334,
   "results": [
     {
       "query_id": "easy_01",
@@ -21,8 +21,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 2,
-      "retrieval_time_ms": 263.4643750006944,
-      "generation_time_ms": 1796.0003340012918,
+      "retrieval_time_ms": 340.2951250318438,
+      "generation_time_ms": 1813.9275420107879,
       "top_chunk_score": 0.761928915977478
     },
     {
@@ -34,8 +34,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 2,
-      "retrieval_time_ms": 347.20562499933294,
-      "generation_time_ms": 1492.1144579984684,
+      "retrieval_time_ms": 231.70733399456367,
+      "generation_time_ms": 953.4686250262894,
       "top_chunk_score": 0.7427462339401245
     },
     {
@@ -47,8 +47,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 2,
-      "retrieval_time_ms": 216.07829200002016,
-      "generation_time_ms": 1364.322915998855,
+      "retrieval_time_ms": 274.201542022638,
+      "generation_time_ms": 1681.595624948386,
       "top_chunk_score": 0.6306133270263672
     },
     {
@@ -60,8 +60,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 2,
-      "retrieval_time_ms": 216.5884999994887,
-      "generation_time_ms": 1187.7643749994604,
+      "retrieval_time_ms": 246.90741702215746,
+      "generation_time_ms": 741.7473749956116,
       "top_chunk_score": 0.5522869825363159
     },
     {
@@ -69,13 +69,13 @@
       "category": "easy",
       "query": "How much does CloudScale object storage cost per GB?",
       "expected_answer": "$0.023 per GB per month",
-      "actual_answer": "CloudScale object storage costs $0.023 per GB per month for standard storage and $0.0125 per GB for the infrequent access tier.",
+      "actual_answer": "CloudScale object storage costs $0.023 per GB per month for standard storage.",
       "answer_correct": true,
       "keyword_matches": 2,
       "keyword_total": 2,
-      "retrieval_time_ms": 263.165125001251,
-      "generation_time_ms": 1109.8370420004358,
-      "top_chunk_score": 0.7315388917922974
+      "retrieval_time_ms": 266.1814999883063,
+      "generation_time_ms": 994.5656660129316,
+      "top_chunk_score": 0.731514036655426
     },
     {
       "query_id": "easy_06",
@@ -86,8 +86,8 @@
       "answer_correct": true,
       "keyword_matches": 4,
       "keyword_total": 4,
-      "retrieval_time_ms": 503.9449590003642,
-      "generation_time_ms": 1487.2609169997304,
+      "retrieval_time_ms": 220.68108298117295,
+      "generation_time_ms": 1037.142125016544,
       "top_chunk_score": 0.6493802070617676
     },
     {
@@ -99,8 +99,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 2,
-      "retrieval_time_ms": 275.13079199889034,
-      "generation_time_ms": 1405.0483329992858,
+      "retrieval_time_ms": 249.3218340096064,
+      "generation_time_ms": 1887.4922090326436,
       "top_chunk_score": 0.7646876573562622
     },
     {
@@ -112,9 +112,9 @@
       "answer_correct": false,
       "keyword_matches": 0,
       "keyword_total": 2,
-      "retrieval_time_ms": 237.5021250009013,
-      "generation_time_ms": 786.4694590007275,
-      "top_chunk_score": 0.5663838982582092
+      "retrieval_time_ms": 281.91458398941904,
+      "generation_time_ms": 1260.6389159918763,
+      "top_chunk_score": 0.5664235353469849
     },
     {
       "query_id": "easy_09",
@@ -125,8 +125,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 2,
-      "retrieval_time_ms": 205.1828330004355,
-      "generation_time_ms": 767.304332999629,
+      "retrieval_time_ms": 257.77545798337087,
+      "generation_time_ms": 972.8622919647023,
       "top_chunk_score": 0.6849074959754944
     },
     {
@@ -138,8 +138,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 2,
-      "retrieval_time_ms": 203.38400000036927,
-      "generation_time_ms": 677.526041999954,
+      "retrieval_time_ms": 237.65399999683723,
+      "generation_time_ms": 1152.7024579700083,
       "top_chunk_score": 0.7439673542976379
     },
     {
@@ -151,8 +151,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 1,
-      "retrieval_time_ms": 207.98404100059997,
-      "generation_time_ms": 1013.272792000862,
+      "retrieval_time_ms": 278.95687497220933,
+      "generation_time_ms": 1583.131916995626,
       "top_chunk_score": 0.619096040725708
     },
     {
@@ -164,9 +164,9 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 1,
-      "retrieval_time_ms": 247.5720000002184,
-      "generation_time_ms": 1186.485750000429,
-      "top_chunk_score": 0.5422388315200806
+      "retrieval_time_ms": 318.971041997429,
+      "generation_time_ms": 1438.6524999863468,
+      "top_chunk_score": 0.5422646999359131
     },
     {
       "query_id": "vague_03",
@@ -177,8 +177,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 1,
-      "retrieval_time_ms": 225.69258300063666,
-      "generation_time_ms": 911.1470839998219,
+      "retrieval_time_ms": 325.76645899098366,
+      "generation_time_ms": 941.1897079553455,
       "top_chunk_score": 0.36486899852752686
     },
     {
@@ -190,8 +190,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 1,
-      "retrieval_time_ms": 206.2435000007099,
-      "generation_time_ms": 800.6320000004052,
+      "retrieval_time_ms": 236.82379204547033,
+      "generation_time_ms": 938.2342500030063,
       "top_chunk_score": 0.26845860481262207
     },
     {
@@ -203,8 +203,8 @@
       "answer_correct": true,
       "keyword_matches": 2,
       "keyword_total": 2,
-      "retrieval_time_ms": 312.36570900000515,
-      "generation_time_ms": 2102.6669170005334,
+      "retrieval_time_ms": 232.58262500166893,
+      "generation_time_ms": 2749.5172080234624,
       "top_chunk_score": 0.37391626834869385
     },
     {
@@ -212,13 +212,13 @@
       "category": "vague",
       "query": "compute instances",
       "expected_answer": "Up to 64 vCPUs, 256GB RAM",
-      "actual_answer": "CloudScale VMs come in several instance types, including:\n\n- **Standard**: General-purpose workloads, balanced CPU and memory\n- **Compute-Optimized**: High-performance computing, scientific simulations\n- **Memory-Optimized**: In-memory databases, real-time analytics\n- **GPU-Accelerated**: Machine learning training, video rendering\n\nPricing for standard instances starts at $0.05 per hour, with reserved instances offering up to a 60% discount for 1-year commitments.",
+      "actual_answer": "CloudScale VMs come in several instance types, including Standard for general-purpose workloads, Compute-Optimized for high-performance computing, Memory-Optimized for in-memory databases, and GPU-Accelerated for machine learning training and video rendering.",
       "answer_correct": false,
       "keyword_matches": 0,
       "keyword_total": 2,
-      "retrieval_time_ms": 627.8260829985811,
-      "generation_time_ms": 2218.151624998427,
-      "top_chunk_score": 0.557305634021759
+      "retrieval_time_ms": 238.83725004270673,
+      "generation_time_ms": 2116.595666971989,
+      "top_chunk_score": 0.557329535484314
     },
     {
       "query_id": "vague_07",
@@ -229,8 +229,8 @@
       "answer_correct": false,
       "keyword_matches": 0,
       "keyword_total": 1,
-      "retrieval_time_ms": 347.49145900059375,
-      "generation_time_ms": 1332.5275420011167,
+      "retrieval_time_ms": 249.48887497885153,
+      "generation_time_ms": 2019.0805830061436,
       "top_chunk_score": 0.3739781379699707
     },
     {
@@ -238,12 +238,12 @@
       "category": "vague",
       "query": "regional revenue split",
       "expected_answer": "North America 62%, Europe 28%, Asia-Pacific 10%",
-      "actual_answer": "The regional revenue split for Q2 2024 is as follows:\n- North America: 62% of total revenue ($2.6 billion)\n- Europe, Middle East, and Africa (EMEA): 24% of revenue ($1.0 billion)\n- Asia-Pacific: 35% year-over-year growth, reaching $600 million. \n\n(Note: The percentages for Asia-Pacific are not provided in the context, but the revenue amount is given.)",
-      "answer_correct": false,
+      "actual_answer": "The regional revenue split for Q2 2024 is as follows:\n- North America: 62% of total revenue ($2.6 billion)\n- Europe, Middle East, and Africa (EMEA): 24% of revenue ($1.0 billion)\n- Asia-Pacific: 35% year-over-year growth, reaching $600 million. \n\n(Note: The percentage for Asia-Pacific is not directly provided in the context, but its revenue is mentioned.)",
+      "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 3,
-      "retrieval_time_ms": 278.82570899964776,
-      "generation_time_ms": 1912.3908749988914,
+      "retrieval_time_ms": 252.31070799054578,
+      "generation_time_ms": 3827.2743329871446,
       "top_chunk_score": 0.3631717562675476
     },
     {
@@ -251,12 +251,12 @@
       "category": "vague",
       "query": "quarterly growth",
       "expected_answer": "Q1 $920M, Q2 $1.05B, Q3 $1.15B, Q4 $1.08B",
-      "actual_answer": "The context does not provide specific quarterly growth rates or comparisons between quarters. Therefore, I cannot answer the question about quarterly growth based on the provided information.",
+      "actual_answer": "The context does not provide specific information about quarterly growth rates or comparisons between quarters. Therefore, I cannot answer the question about quarterly growth.",
       "answer_correct": false,
       "keyword_matches": 0,
       "keyword_total": 4,
-      "retrieval_time_ms": 366.6920420000679,
-      "generation_time_ms": 949.5399579991499,
+      "retrieval_time_ms": 264.42091597709805,
+      "generation_time_ms": 1859.517542005051,
       "top_chunk_score": 0.5593594908714294
     },
     {
@@ -268,8 +268,8 @@
       "answer_correct": false,
       "keyword_matches": 0,
       "keyword_total": 1,
-      "retrieval_time_ms": 267.4808749998192,
-      "generation_time_ms": 888.9081670004089,
+      "retrieval_time_ms": 232.95400000642985,
+      "generation_time_ms": 1100.337041018065,
       "top_chunk_score": 0.39787715673446655
     },
     {
@@ -281,8 +281,8 @@
       "answer_correct": true,
       "keyword_matches": 3,
       "keyword_total": 3,
-      "retrieval_time_ms": 245.601209000597,
-      "generation_time_ms": 2499.287667000317,
+      "retrieval_time_ms": 255.49020897597075,
+      "generation_time_ms": 1766.328917001374,
       "top_chunk_score": 0.6534597873687744
     },
     {
@@ -294,9 +294,9 @@
       "answer_correct": true,
       "keyword_matches": 2,
       "keyword_total": 2,
-      "retrieval_time_ms": 212.4770830014313,
-      "generation_time_ms": 1501.8057079996652,
-      "top_chunk_score": 0.5235868692398071
+      "retrieval_time_ms": 233.4072919911705,
+      "generation_time_ms": 1534.2652919935063,
+      "top_chunk_score": 0.5235967040061951
     },
     {
       "query_id": "hard_03",
@@ -307,8 +307,8 @@
       "answer_correct": true,
       "keyword_matches": 3,
       "keyword_total": 4,
-      "retrieval_time_ms": 439.4806250002148,
-      "generation_time_ms": 2854.821291000917,
+      "retrieval_time_ms": 244.30887500056997,
+      "generation_time_ms": 1212.5853750039823,
       "top_chunk_score": 0.6925922632217407
     },
     {
@@ -316,13 +316,13 @@
       "category": "hard",
       "query": "What percentage of total revenue came from cloud services?",
       "expected_answer": "50% ($2.1B of $4.2B)",
-      "actual_answer": "To calculate the percentage of total revenue that came from cloud services, we need to consider the total revenue and the revenue from cloud services.\n\nFrom the context, we have the following total revenues for each quarter:\n\n- Q1 2024: $920 million\n- Q2 2024: $1.05 billion (or $1,050 million)\n- Q3 2024: $1.15 billion (or $1,150 million)\n- Q4 2024: $1.08 billion (or $1,080 million)\n\nThe total revenue for the year is given as $4.2 billion (or $4,200 million).\n\nThe total revenue from cloud services for each quarter is:\n\n- Q1 2024: $480 million\n- Q2 2024: $540 million\n- Q3 2024: $580 million\n- Q4 2024: $500 million\n\nNow, we sum the cloud services revenue:\n\n$480 million (Q1) + $540 million (Q2) + $580 million (Q3) + $500 million (Q4) = $2,100 million\n\nNow, we calculate the percentage of total revenue that came from cloud services:\n\n\\[\n\\text{Percentage} = \\left( \\frac{\\text{Cloud Services Revenue}}{\\text{Total Revenue}} \\right) \\times 100\n\\]\n\n\\[\n\\text{Percentage} = \\left( \\frac{2,100 \\text{ million}}{4,200 \\text{ million}} \\right) \\times 100 = 50\\%\n\\]\n\nTherefore, the percentage of total revenue that came from cloud services is **50%**.",
+      "actual_answer": "To calculate the percentage of total revenue that came from cloud services, we need to consider the total revenue and the revenue from cloud services for the full year.\n\nFrom the context:\n- Full-year revenue: $4.2 billion\n- Total cloud services revenue for the year:\n  - Q1: $480 million\n  - Q2: $540 million\n  - Q3: $580 million\n  - Q4: $500 million\n\nTotal cloud services revenue = $480 million + $540 million + $580 million + $500 million = $2.1 billion\n\nNow, we can calculate the percentage:\nPercentage of total revenue from cloud services = (Cloud services revenue / Total revenue) * 100\n= ($2.1 billion / $4.2 billion) * 100\n= 50%\n\nTherefore, the percentage of total revenue that came from cloud services is 50%.",
       "answer_correct": true,
-      "keyword_matches": 2,
+      "keyword_matches": 3,
       "keyword_total": 3,
-      "retrieval_time_ms": 513.435542001389,
-      "generation_time_ms": 5728.241667000475,
-      "top_chunk_score": 0.6069081425666809
+      "retrieval_time_ms": 242.49808298191056,
+      "generation_time_ms": 5076.528792036697,
+      "top_chunk_score": 0.6069042682647705
     },
     {
       "query_id": "hard_05",
@@ -333,8 +333,8 @@
       "answer_correct": true,
       "keyword_matches": 4,
       "keyword_total": 4,
-      "retrieval_time_ms": 310.7925830008753,
-      "generation_time_ms": 920.5595829989761,
+      "retrieval_time_ms": 608.411040971987,
+      "generation_time_ms": 1055.3831250290386,
       "top_chunk_score": 0.6303418874740601
     },
     {
@@ -342,13 +342,13 @@
       "category": "hard",
       "query": "If I need HIPAA compliance, what CloudScale products can I use?",
       "expected_answer": "All CloudScale services are HIPAA certified",
-      "actual_answer": "You can use any CloudScale products that are certified for HIPAA compliance, which includes the CloudScale platform as a whole, as it is certified for SOC 2 Type II, ISO 27001, HIPAA, and PCI DSS compliance. However, specific product details are not provided in the context, so it's advisable to verify with CloudScale support or documentation for any specific product limitations or requirements related to HIPAA compliance.",
-      "answer_correct": false,
+      "actual_answer": "You can use CloudScale services that are certified for HIPAA compliance, which includes the CloudScale platform as a whole, as it is mentioned that CloudScale is certified for SOC 2 Type II, ISO 27001, HIPAA, and PCI DSS compliance. However, the specific products that can be used under HIPAA compliance are not detailed in the provided context. Therefore, it is advisable to consult with TechCorp or your account representative for specific product recommendations that meet HIPAA requirements.",
+      "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 1,
-      "retrieval_time_ms": 372.54679200123064,
-      "generation_time_ms": 1588.8979169994855,
-      "top_chunk_score": 0.6104714274406433
+      "retrieval_time_ms": 240.2665409608744,
+      "generation_time_ms": 3428.3268750295974,
+      "top_chunk_score": 0.6104341149330139
     },
     {
       "query_id": "hard_07",
@@ -359,8 +359,8 @@
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 1,
-      "retrieval_time_ms": 293.98733299967716,
-      "generation_time_ms": 2048.7901659998897,
+      "retrieval_time_ms": 244.23637497238815,
+      "generation_time_ms": 1069.8883750010282,
       "top_chunk_score": 0.5346438884735107
     },
     {
@@ -368,13 +368,13 @@
       "category": "hard",
       "query": "How much would 1TB of standard storage cost per year on CloudScale?",
       "expected_answer": "$0.023 * 1000GB * 12 months = $276 per year",
-      "actual_answer": "To calculate the cost of 1TB of standard storage per year on CloudScale:\n\n1. **Cost per GB per month for standard storage**: $0.023\n2. **1TB in GB**: 1TB = 1024GB\n3. **Monthly cost for 1TB**: 1024GB * $0.023/GB = $23.552\n4. **Annual cost for 1TB**: $23.552 * 12 months = $282.624\n\nTherefore, the cost of 1TB of standard storage per year on CloudScale would be approximately **$282.62**.",
+      "actual_answer": "To calculate the cost of 1TB of standard storage per year on CloudScale:\n\n1. The cost of standard storage is $0.023 per GB per month.\n2. 1TB is equal to 1,024 GB.\n3. Monthly cost for 1TB = 1,024 GB * $0.023/GB = $23.552.\n4. Annual cost = $23.552 * 12 months = $282.624.\n\nTherefore, the cost of 1TB of standard storage per year on CloudScale would be approximately $282.62.",
       "answer_correct": true,
       "keyword_matches": 1,
       "keyword_total": 2,
-      "retrieval_time_ms": 507.23004099927493,
-      "generation_time_ms": 2895.1079580001533,
-      "top_chunk_score": 0.635729968547821
+      "retrieval_time_ms": 236.08783300733194,
+      "generation_time_ms": 3288.7419579783455,
+      "top_chunk_score": 0.6357306241989136
     },
     {
       "query_id": "hard_09",
@@ -385,8 +385,8 @@
       "answer_correct": true,
       "keyword_matches": 4,
       "keyword_total": 4,
-      "retrieval_time_ms": 199.36241699906532,
-      "generation_time_ms": 1105.6413749993226,
+      "retrieval_time_ms": 267.5802090088837,
+      "generation_time_ms": 1117.0113330008462,
       "top_chunk_score": 0.5461588501930237
     },
     {
@@ -398,8 +398,8 @@
       "answer_correct": true,
       "keyword_matches": 2,
       "keyword_total": 3,
-      "retrieval_time_ms": 342.4117919985292,
-      "generation_time_ms": 1245.035125000868,
+      "retrieval_time_ms": 245.69549999432638,
+      "generation_time_ms": 1380.7588750496507,
       "top_chunk_score": 0.640647828578949
     }
   ]
