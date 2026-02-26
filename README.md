@@ -2,17 +2,18 @@
 
 A production-oriented RAG system built with experiment-driven development. Focus on measured improvements, documented trade-offs, and engineering judgment.
 
-## Key Results
+## Performance
 
 | Metric | Value |
 |--------|-------|
-| **Accuracy** | 83.3% (30-query eval) |
-| **Query Latency (P50)** | 1,824ms |
-| **Query Latency (P95)** | 6,282ms |
-| **Retrieval** | 269ms |
-| **Generation** | 1,674ms |
+| **Accuracy** | 83.3% (25/30 queries) |
+| **Indexing time** | 2.67s |
+| **Query latency (P50)** | 1,824ms |
+| **Query latency (P95)** | 6,282ms |
+| **Retrieval (mean)** | 269ms |
+| **Generation (mean)** | 1,733ms |
 
-**Bottleneck:** LLM generation dominates latency. Retrieval is fast.
+Bottleneck is LLM generation (~1.7s). Retrieval is fast (~270ms).
 
 ## What I Built & Learned
 
