@@ -204,10 +204,4 @@ python tests/test_hallucination.py
 1. **Start with hard test cases** — Easy queries always pass, teach nothing
 2. **Measure latency from day 1** — Would've caught reranking issue earlier  
 3. **Build evaluation first** — Before adding features
-
-## Interview Questions I Can Answer
-
-- **Why hybrid over semantic-only?** Measured +6% on keyword-heavy queries like "HIPAA compliance"
-- **Why reject reranking?** 5s latency for 0% accuracy gain. Data killed the feature.
-- **How to scale to 1M docs?** FAISS with IVF, sharding, async embedding, caching. See system_design.md
-- **How handle embedding drift?** Version embeddings, reindex on model change, A/B test retrieval
+   
