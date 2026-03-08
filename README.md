@@ -15,6 +15,15 @@ A production-oriented RAG system built with experiment-driven development. Focus
 
 Bottleneck is LLM generation (~1.7s). Retrieval is fast (~270ms).
 
+## Demo
+
+### Streamlit UI
+![Streamlit Demo](docs/images/streamlit_demo.png)
+
+### FastAPI
+![API Docs](docs/images/api_docs.png)
+
+
 ## What I Built & Learned
 
 ### Chunking Strategy
@@ -205,5 +214,3 @@ python tests/test_hallucination.py
 1. **Start with hard test cases** — Easy queries always pass, teach nothing
 2. **Measure latency from day 1** — Would've caught reranking issue earlier  
 3. **Build evaluation first** — Before adding features
-
-l
