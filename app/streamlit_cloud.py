@@ -3,7 +3,7 @@ import os
 import streamlit as st
 from openai import OpenAI
 
-st.set_page_config(page_title="Doc Intelligence", page_icon="📚")
+st.set_page_config(page_title="Doc Intelligence", page_icon="📚", layout="wide")
 
 st.title("📚 Doc Intelligence")
 st.caption("RAG-powered document Q&A")
@@ -16,7 +16,7 @@ if not api_key:
 
 client = OpenAI(api_key=api_key)
 
-# Sample documents (embedded for demo)
+# Sample documents
 DOCS = """
 # TechCorp Annual Report 2024
 
@@ -60,21 +60,7 @@ DOCS = """
 - PCI DSS
 """
 
-question = st.text_input("Ask a question:", placeholder="What was TechCorp's Q3 2024 revenue?")
-
-if st.button("�� Search") and question:
-    with st.spinner("Searching..."):
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": f"Answer questions based only on this context. Be concise.\n\nContext:\n{DOCS}"},
-                {"role": "user", "content": question}
-            ]
-        )
-        st.subheader("💬 Answer")
-        st.write(response.choices[0].message.content)
-        st.success("✅ Grounded in context")
-
+# Sidebar
 st.sidebar.header("📝 Example Questions")
 st.sidebar.markdown("""
 - What was TechCorp's Q3 2024 revenue?
@@ -89,3 +75,23 @@ This is a demo of Doc Intelligence, a RAG system for document Q&A.
 
 [View full project on GitHub](https://github.com/SAMithila/doc-intelligence)
 """)
+
+# Main content
+st.subheader("Ask a question:")
+question = st.text_input("", placeholder="e.g., What was TechCorp's Q3 2024 revenue?", label_visibility="collapsed")
+
+if st.button("🔍 Search", type="primary"):
+    if question:
+        with st.spinner("Searching..."):
+            response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": f"Answer questions based only on this context. Be concise.\n\nContext:\n{DOCS}"},
+                    {"role": "user", "content": question}
+                ]
+            )
+            st.subheader("💬 Answer")
+            st.write(response.choices[0].message.content)
+            st.success("✅ Grounded in context")
+    else:
+        st.warning("Please enter a question")
