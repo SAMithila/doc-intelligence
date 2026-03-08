@@ -2,17 +2,18 @@
 
 A production-oriented RAG system built with experiment-driven development. Focus on measured improvements, documented trade-offs, and engineering judgment.
 
-## Key Results
+## Performance
 
 | Metric | Value |
 |--------|-------|
-| **Accuracy** | 83.3% (30-query eval) |
-| **Query Latency (P50)** | 1,824ms |
-| **Query Latency (P95)** | 6,282ms |
-| **Retrieval** | 269ms |
-| **Generation** | 1,674ms |
+| **Accuracy** | 83.3% (25/30 queries) |
+| **Indexing time** | 2.67s |
+| **Query latency (P50)** | 1,824ms |
+| **Query latency (P95)** | 6,282ms |
+| **Retrieval (mean)** | 1,062ms |
+| **Generation (mean)** | 1,674ms |
 
-**Bottleneck:** LLM generation dominates latency. Retrieval is fast.
+Bottleneck is LLM generation (~1.7s). Retrieval is fast (~270ms).
 
 ## What I Built & Learned
 
@@ -204,3 +205,5 @@ python tests/test_hallucination.py
 1. **Start with hard test cases** — Easy queries always pass, teach nothing
 2. **Measure latency from day 1** — Would've caught reranking issue earlier  
 3. **Build evaluation first** — Before adding features
+
+l
