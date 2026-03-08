@@ -13,7 +13,7 @@ A production-oriented RAG system built with experiment-driven development. Focus
 | **Retrieval (mean)** | 1,062ms |
 | **Generation (mean)** | 1,674ms |
 
-Bottleneck is LLM generation (~1.7s). Retrieval is ~1s.
+Bottleneck is LLM generation (~1.7s). Retrieval is fast (~270ms).
 
 ## What I Built & Learned
 
