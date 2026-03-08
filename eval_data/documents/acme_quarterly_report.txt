@@ -1,0 +1,65 @@
+# Acme Corporation Q4 2024 Financial Report
+
+## Executive Summary
+
+Acme Corporation delivered exceptional results in Q4 2024, with total revenue reaching $890 million, a 28% increase year-over-year. Our strategic investments in AI and automation drove significant margin improvements.
+
+## Financial Highlights
+
+### Revenue Breakdown
+- Product Sales: $520 million (58% of total)
+- Services: $280 million (31% of total)
+- Licensing: $90 million (11% of total)
+
+### Regional Performance
+- Americas: $490 million (55%)
+- EMEA: $267 million (30%)
+- Asia-Pacific: $133 million (15%)
+
+### Profitability
+- Gross margin: 42%, up from 38% in Q4 2023
+- Operating margin: 18%
+- Net income: $142 million
+- Earnings per share: $2.84
+
+## Operational Metrics
+
+### Workforce
+Acme ended Q4 with 8,200 employees globally:
+- Engineering: 3,100 (38%)
+- Sales & Marketing: 2,050 (25%)
+- Operations: 1,640 (20%)
+- G&A: 1,410 (17%)
+
+We hired 450 new employees in Q4, with a focus on AI/ML engineers and cloud architects.
+
+### Customer Metrics
+- Total customers: 12,400
+- Enterprise customers (>$100K ARR): 890
+- Net revenue retention: 118%
+- Customer acquisition cost: $4,200
+
+## Product Updates
+
+### Acme Platform 3.0
+Released in October 2024, featuring:
+- Real-time analytics dashboard
+- AI-powered recommendations
+- Multi-cloud deployment support
+- SOC 2 Type II certification
+
+### Acme AI Assistant
+Beta launched in December 2024:
+- Natural language query interface
+- Automated report generation
+- Integration with 50+ enterprise tools
+
+## 2025 Outlook
+
+We project Q1 2025 revenue between $910 million and $940 million, representing 22-26% year-over-year growth. Full year 2025 guidance is $3.9 billion to $4.1 billion.
+
+Key initiatives:
+- Expand APAC presence with new Singapore office
+- Launch Acme Platform 4.0 with enhanced AI capabilities
+- Achieve FedRAMP authorization
+- Target 10,000 employees by year-end

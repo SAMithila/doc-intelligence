@@ -1,0 +1,127 @@
+# DataFlow AI - Series A Pitch Deck Summary
+
+## Company Overview
+
+DataFlow AI is a B2B SaaS platform that automates data pipeline creation using natural language. Founded in 2023, we're headquartered in San Francisco with a remote-first team.
+
+## Problem
+
+Enterprise data teams spend 60% of their time on repetitive pipeline maintenance:
+- Manual SQL writing and debugging
+- Schema change management
+- Data quality monitoring
+- Documentation updates
+
+Average enterprise has 500+ data pipelines, each requiring 4 hours/month maintenance.
+
+## Solution
+
+DataFlow AI uses LLMs to:
+1. Generate data pipelines from natural language descriptions
+2. Automatically adapt to schema changes
+3. Monitor data quality with AI-powered anomaly detection
+4. Self-document and explain transformations
+
+## Product
+
+### Core Features
+- Natural language to SQL/Python generation
+- Visual pipeline builder with AI suggestions
+- Automated testing and validation
+- Real-time data quality monitoring
+- Integration with 40+ data sources
+
+### Technical Stack
+- Built on Apache Spark and dbt
+- Deployed on customer's cloud (AWS, GCP, Azure)
+- SOC 2 Type II certified
+- HIPAA compliant option available
+
+## Traction
+
+### Key Metrics (as of December 2024)
+- ARR: $2.4 million
+- Customers: 45 enterprises
+- Net Revenue Retention: 145%
+- Monthly growth rate: 18%
+
+### Notable Customers
+- 3 Fortune 500 companies
+- 12 companies with >$1B revenue
+- Average contract value: $53,000/year
+
+### Usage Statistics
+- 12,000 pipelines generated
+- 2.1 million queries processed monthly
+- 94% customer satisfaction score
+
+## Business Model
+
+### Pricing Tiers
+- Starter: $500/month (5 users, 50 pipelines)
+- Professional: $2,000/month (20 users, 200 pipelines)
+- Enterprise: Custom (unlimited users, dedicated support)
+
+### Unit Economics
+- CAC: $18,000
+- LTV: $127,000
+- LTV/CAC ratio: 7.1x
+- Payback period: 8 months
+
+## Market
+
+### TAM/SAM/SOM
+- TAM: $45 billion (data infrastructure market)
+- SAM: $8 billion (data pipeline tools)
+- SOM: $800 million (AI-powered data tools)
+
+### Competition
+- Traditional: Fivetran, Airbyte, dbt
+- AI-native: Mostly early-stage startups
+- Our advantage: Only solution combining generation + monitoring + adaptation
+
+## Team
+
+### Leadership
+- CEO: Sarah Chen (ex-Google, Stanford CS)
+- CTO: Marcus Johnson (ex-Databricks, MIT PhD)
+- VP Engineering: Lisa Park (ex-Airbnb)
+- VP Sales: David Miller (ex-Snowflake)
+
+### Team Composition
+- Total: 38 employees
+- Engineering: 22 (58%)
+- Sales & Marketing: 10 (26%)
+- G&A: 6 (16%)
+
+## Financials
+
+### Historical
+| Year | ARR | Growth |
+|------|-----|--------|
+| 2023 | $400K | - |
+| 2024 | $2.4M | 500% |
+
+### Projections
+| Year | ARR | Customers |
+|------|-----|-----------|
+| 2025 | $8M | 120 |
+| 2026 | $24M | 300 |
+| 2027 | $60M | 650 |
+
+### Funding History
+- Seed (2023): $3.2M led by Sequoia Scout
+- Current raise: Series A, $15M target
+
+## Use of Funds
+
+Series A allocation:
+- Engineering (50%): Expand team to 45 engineers
+- Sales & Marketing (30%): Build enterprise sales team
+- Operations (20%): SOC 2 audit, infrastructure
+
+## Ask
+
+Raising $15 million Series A at $60 million pre-money valuation.
+
+Target investors: Enterprise SaaS specialists with data infrastructure expertise.
