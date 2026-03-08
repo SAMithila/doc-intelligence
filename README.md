@@ -4,16 +4,21 @@ A production-oriented RAG system built with experiment-driven development. Focus
 
 ## Performance
 
+Evaluated on 38 queries across 5 documents:
+
+| Category | Accuracy |
+|----------|----------|
+| Easy | 80% |
+| Vague | 36% |
+| Hard | 83% |
+| **Overall** | **68%** |
+
 | Metric | Value |
 |--------|-------|
-| **Accuracy** | 83.3% (25/30 queries) |
-| **Indexing time** | 2.67s |
-| **Query latency (P50)** | 1,824ms |
-| **Query latency (P95)** | 6,282ms |
-| **Retrieval (mean)** | 1,062ms |
-| **Generation (mean)** | 1,674ms |
+| Query latency (P50) | 1,603ms |
+| Retrieval | 274ms |
+| Generation | 1,329ms |
 
-Bottleneck is LLM generation (~1.7s). Retrieval is fast (~270ms).
 
 ## Demo
 
