@@ -117,7 +117,7 @@ See [docs/architecture_decisions.md](docs/architecture_decisions.md) for details
 ## Screenshots
 
 ### Streamlit UI
-![Streamlit Demo](docs/images/streamlit_demo.png)
+![Streamlit Demo](docs/images/streamlit_demo2.png)
 
 ### FastAPI
 ![API Docs](docs/images/api_docs.png)
