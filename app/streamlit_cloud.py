@@ -2,7 +2,7 @@
 import os
 import streamlit as st
 from openai import OpenAI
-from pinecone import Pinecone
+import pinecone
 
 st.set_page_config(page_title="Doc Intelligence", page_icon="📚", layout="wide")
 
@@ -25,8 +25,8 @@ if not pinecone_key:
 client = OpenAI(api_key=openai_key)
 
 try:
-    pc = Pinecone(api_key=pinecone_key)
-    index = pc.Index("doc-intelligence")
+    pinecone.init(api_key=pinecone_key, environment="us-east-1")
+    index = pinecone.Index("doc-intelligence")
 except Exception as e:
     st.error(f"Pinecone connection failed: {e}")
     st.stop()
@@ -78,11 +78,7 @@ def index_documents():
     vectors = []
     for doc_id, content in DOCUMENTS.items():
         embedding = get_embedding(content)
-        vectors.append({
-            "id": doc_id,
-            "values": embedding,
-            "metadata": {"content": content}
-        })
+        vectors.append((doc_id, embedding, {"content": content}))
     index.upsert(vectors=vectors)
     return len(vectors)
 
@@ -111,7 +107,7 @@ def generate_answer(query: str, context: str) -> str:
 
 
 # Sidebar
-st.sidebar.header("📝 Example Questions")
+st.sidebar.header("�� Example Questions")
 st.sidebar.markdown("""
 - What was TechCorp's Q3 2024 revenue?
 - What is Acme's revenue breakdown?
