@@ -1,132 +1,77 @@
 # Doc Intelligence
 
-A production-oriented RAG system built with experiment-driven development. Focus on measured improvements, documented trade-offs, and engineering judgment.
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Streamlit-FF4B4B)](https://doc-intelligence-m7xklhzxv3dadwmcenar9f.streamlit.app)
+[![Tests](https://github.com/SAMithila/doc-intelligence/actions/workflows/test.yml/badge.svg)](https://github.com/SAMithila/doc-intelligence/actions)
 
-## Performance
+**[→ Try the Live Demo](https://doc-intelligence-m7xklhzxv3dadwmcenar9f.streamlit.app)**
+
+RAG system for document Q&A. Built to learn what actually works in retrieval systems vs. what's hype.
+
+## Results
 
 Evaluated on 38 queries across 5 documents:
 
 | Category | Accuracy |
 |----------|----------|
-| Easy | 80% |
-| Vague | 36% |
-| Hard | 83% |
-| **Overall** | **68%** |
+| Easy | 87% |
+| Vague | 64% |
+| Hard | 67% |
+| **Overall** | **74%** |
 
 | Metric | Value |
 |--------|-------|
-| Query latency (P50) | 1,603ms |
-| Retrieval | 274ms |
-| Generation | 1,329ms |
+| Retrieval | 285ms |
+| Generation | 1,573ms |
+| Total | 1,858ms |
 
+## What I Tried
 
-## Demo
+| # | Experiment | Result | Decision |
+|---|------------|--------|----------|
+| 001 | Baseline | 80% accuracy, Q3 query failed | Found chunking bug |
+| 002 | Recursive chunking | Fixed the failure | ✅ Keep |
+| 003 | Hybrid search | +6% accuracy | ✅ Keep |
+| 004 | Reranking | +5s latency, 0% gain | ❌ Rejected |
+| 005 | HyDE | +20% on vague queries | ✅ Conditional |
+| 006 | Evaluation framework | 38-query test set | ✅ Essential |
+| 007 | Hallucination detection | Catches fabrications | ✅ Keep |
 
-### Streamlit UI
-![Streamlit Demo](docs/images/streamlit_demo.png)
+## Key Learnings
 
-### FastAPI
-![API Docs](docs/images/api_docs.png)
+**Chunking matters more than retrieval.** Fixed-size chunking split "Q3 2024" from "$1.15 billion". A chunk literally started with "ervices" (mid-word cut). Recursive chunking fixed it.
 
+**Measure latency, not just accuracy.** Reranking moved correct chunk to #1. Then I measured: 5 seconds per query. Killed it.
 
-## What I Built & Learned
-
-### Chunking Strategy
-Fixed-size chunking broke queries by splitting headers from content. A chunk literally started with "ervices" (mid-word cut). Recursive chunking respects paragraph boundaries and fixed this.
-
-### Hybrid Retrieval
-Combined BM25 keyword search with semantic search using Reciprocal Rank Fusion. Result: +6% accuracy on hard queries. Minimal latency overhead.
-
-### Query Expansion (HyDE)
-Short queries like "Q3 revenue" improved from 50% → 70% accuracy. Adds 1.5s latency, so it's conditional—only triggers for queries ≤3 words.
-
-### Reranking (Rejected)
-Built LLM-based reranker. Moved correct chunk to #1. Then measured: **5 seconds per query**. Killed it. Not worth the latency.
-
-### Hallucination Detection
-Verifies answers are grounded in retrieved context. Catches when LLM makes up facts not in the source documents.
-
-## Accuracy by Query Type
-
-| Approach | Overall | Easy | Vague | Hard |
-|----------|---------|------|-------|------|
-| Semantic only | 77% | 90% | 50% | 90% |
-| + Hybrid | 83% | 90% | 60% | 100% |
-| + HyDE (conditional) | 83% | 90% | 70% | 90% |
-
-Evaluation uses 30 labeled queries: 10 easy, 10 vague, 10 hard/multi-hop.
+**Easy tests lie.** For 5 days I got 100% accuracy. Then I built proper evaluation with vague queries. Real accuracy: 77%.
 
 ## Architecture
 ```
 User Query
     │
     ▼
-┌─────────────────────────────────────────┐
-│           FastAPI / Streamlit           │
-└─────────────────┬───────────────────────┘
-                  │
-    ┌─────────────┼─────────────┐
-    ▼             ▼             ▼
-┌────────┐  ┌──────────┐  ┌─────────┐
-│  HyDE  │  │ Semantic │  │  BM25   │
-│(if short)│ │  Search  │  │ Search  │
-└────┬───┘  └────┬─────┘  └────┬────┘
-     └───────────┼─────────────┘
-                 ▼
-         ┌─────────────┐
-         │ Rank Fusion │
-         └──────┬──────┘
-                ▼
-         ┌─────────────┐
-         │  Generator  │
-         │ (GPT-4o-mini)│
-         └──────┬──────┘
-                ▼
-         ┌─────────────┐
-         │ Groundedness│
-         │   Check     │
-         └──────┬──────┘
-                ▼
-            Response
+┌─────────────────────────────────────┐
+│   HyDE (if query ≤ 3 words)         │
+└─────────────┬───────────────────────┘
+              │
+    ┌─────────┴─────────┐
+    ▼                   ▼
+┌────────┐        ┌──────────┐
+│Semantic│        │   BM25   │
+│ Search │        │  Search  │
+└────┬───┘        └────┬─────┘
+     └────────┬────────┘
+              ▼
+       Rank Fusion (RRF)
+              │
+              ▼
+         GPT-4o-mini
+              │
+              ▼
+    Groundedness Check (optional)
+              │
+              ▼
+          Response
 ```
-
-## Scaling Strategy
-
-### Current Scale
-- 2 documents, 17 chunks
-- Single-node ChromaDB
-- Synchronous embedding
-
-### 10K Documents
-- ChromaDB handles this fine
-- Batch embedding calls
-- Add query result caching
-
-### 100K Documents
-- Switch to FAISS with IVF index
-- Async embedding pipeline
-- Redis cache for frequent queries
-
-### 1M+ Documents
-- Shard vector index by document type/date
-- Distributed embedding workers
-- Consider managed service (Pinecone/Weaviate)
-- Approximate nearest neighbor (ANN)
-
-### High Traffic (100+ QPS)
-- Horizontal API scaling
-- GPU for local embeddings (cost trade-off)
-- Response caching with TTL
-- Rate limiting per client
-
-## Failure Handling
-
-| Failure | Impact | Mitigation |
-|---------|--------|------------|
-| OpenAI API timeout | Query fails | Retry with backoff, fallback to cached |
-| ChromaDB corruption | Index lost | Periodic snapshots, rebuild from source |
-| Empty retrieval | Bad answer | Return "not found" instead of hallucinating |
-| Embedding drift | Quality degradation | Version embeddings, reindex on model change |
 
 ## Quick Start
 ```bash
@@ -139,83 +84,46 @@ export OPENAI_API_KEY=your_key
 # Run evaluation
 python tests/test_evaluation.py
 
-# Run benchmarks
-python benchmarks/benchmark_retrieval.py
-
 # Start UI
 streamlit run app/streamlit_app.py
-
-# Start API
-python run_api.py
-```
-
-## API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/health` | GET | Service health + stats |
-| `/query` | POST | Ask a question |
-| `/docs` | GET | Swagger documentation |
-```bash
-# Example query
-curl -X POST http://localhost:8000/query \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What was Q3 revenue?", "verify_groundedness": true}'
 ```
 
 ## Project Structure
 ```
 src/docint/
-├── api/           # FastAPI endpoints
-├── ingest/        # Document loading, chunking
+├── ingest/        # Chunking (fixed, recursive)
 ├── retrieval/     # Semantic, BM25, hybrid, HyDE
-├── generation/    # LLM response generation
+├── generation/    # LLM answer generation
 ├── verification/  # Hallucination detection
-└── evaluation/    # Metrics, test framework
+├── evaluation/    # Metrics and testing
+└── api/           # FastAPI endpoints
 
-experiments/       # Documented experiments with decisions
-docs/              # Architecture decisions, system design
-benchmarks/        # Performance measurement
-docker/            # Deployment configuration
-```
-
-## Experiments
-
-| # | Experiment | Result | Decision |
-|---|------------|--------|----------|
-| 001 | Baseline | 80% accuracy, Q3 failed | Found chunking bug |
-| 002 | Recursive chunking | Fixed retrieval | ✅ Keep |
-| 003 | Hybrid search | +6% accuracy | ✅ Keep |
-| 004 | Reranking | +5s latency | ❌ Rejected |
-| 005 | HyDE | +20% on vague | ✅ Conditional |
-| 006 | Evaluation framework | 30-query test set | ✅ Essential |
-| 007 | Hallucination detection | Catches fabrications | ✅ Keep |
-
-See `docs/architecture_decisions.md` for detailed reasoning.
-
-## Testing
-```bash
-# Unit tests (21 tests)
-pytest tests/test_chunker.py tests/test_retriever.py -v
-
-# Full evaluation (30 queries)
-python tests/test_evaluation.py
-
-# Hallucination detection
-python tests/test_hallucination.py
+experiments/       # Documented experiments
+docs/              # Architecture decisions
 ```
 
 ## Design Decisions
 
 | Decision | Choice | Why |
 |----------|--------|-----|
-| Vector Store | ChromaDB | Local persistence, simple API, sufficient for <100K docs |
-| Chunk Size | 512 chars | Tested 256/512/1024. 512 keeps sections intact without noise |
-| Embedding | text-embedding-3-small | Good quality, reasonable cost. Would test local models for scale |
-| LLM | gpt-4o-mini | Fast, cheap, good enough. Would use gpt-4o for complex queries |
+| Chunking | Recursive | Fixed-size broke semantic units |
+| Search | Hybrid (BM25 + semantic) | +6% accuracy |
+| Reranking | Rejected | 5s latency, no gain |
+| HyDE | Conditional only | Expensive, use for short queries |
+| Vector store | ChromaDB | Simple, good for <100K docs |
+
+See [docs/architecture_decisions.md](docs/architecture_decisions.md) for details.
+
+## Screenshots
+
+### Streamlit UI
+![Streamlit Demo](docs/images/streamlit_demo.png)
+
+### FastAPI
+![API Docs](docs/images/api_docs.png)
 
 ## What I'd Do Differently
 
-1. **Start with hard test cases** — Easy queries always pass, teach nothing
-2. **Measure latency from day 1** — Would've caught reranking issue earlier  
+1. **Start with hard test cases** — Easy queries always pass
+2. **Measure latency from day 1** — Would've caught reranking faster
 3. **Build evaluation first** — Before adding features
