@@ -2,7 +2,7 @@
 import os
 import streamlit as st
 from openai import OpenAI
-import pinecone
+from pinecone import Pinecone
 
 st.set_page_config(page_title="Doc Intelligence", page_icon="📚", layout="wide")
 
@@ -25,10 +25,10 @@ if not pinecone_key:
 client = OpenAI(api_key=openai_key)
 
 try:
-    pinecone.init(api_key=pinecone_key, environment="us-east-1")
-    index = pinecone.Index("doc-intelligence")
+    pc = Pinecone(api_key=pinecone_key)
+    index = pc.Index("doc-intelligence")
 except Exception as e:
-    st.error(f"Pinecone connection failed: {e}")
+    st.error(f"Pinecone error: {e}")
     st.stop()
 
 # Sample documents
@@ -78,7 +78,11 @@ def index_documents():
     vectors = []
     for doc_id, content in DOCUMENTS.items():
         embedding = get_embedding(content)
-        vectors.append((doc_id, embedding, {"content": content}))
+        vectors.append({
+            "id": doc_id,
+            "values": embedding,
+            "metadata": {"content": content}
+        })
     index.upsert(vectors=vectors)
     return len(vectors)
 
@@ -107,7 +111,7 @@ def generate_answer(query: str, context: str) -> str:
 
 
 # Sidebar
-st.sidebar.header("�� Example Questions")
+st.sidebar.header("📝 Example Questions")
 st.sidebar.markdown("""
 - What was TechCorp's Q3 2024 revenue?
 - What is Acme's revenue breakdown?
@@ -118,8 +122,11 @@ st.sidebar.markdown("""
 st.sidebar.header("⚙️ Admin")
 if st.sidebar.button("🔄 Re-index Documents"):
     with st.spinner("Indexing..."):
-        count = index_documents()
-        st.sidebar.success(f"Indexed {count} documents")
+        try:
+            count = index_documents()
+            st.sidebar.success(f"Indexed {count} documents")
+        except Exception as e:
+            st.sidebar.error(f"Indexing failed: {e}")
 
 st.sidebar.header("ℹ️ About")
 st.sidebar.markdown("[GitHub](https://github.com/SAMithila/doc-intelligence)")
@@ -131,17 +138,20 @@ question = st.text_input("", placeholder="e.g., What is Acme's revenue breakdown
 if st.button("🔍 Search", type="primary"):
     if question:
         with st.spinner("Searching..."):
-            relevant_docs = search(question, top_k=3)
-            context = "\n\n".join(relevant_docs)
-            answer = generate_answer(question, context)
-            
-            st.subheader("💬 Answer")
-            st.write(answer)
-            st.success("✅ Grounded in context")
-            
-            with st.expander("📄 Sources"):
-                for i, doc in enumerate(relevant_docs, 1):
-                    st.markdown(f"**Source {i}:**")
-                    st.text(doc[:300] + "...")
+            try:
+                relevant_docs = search(question, top_k=3)
+                context = "\n\n".join(relevant_docs)
+                answer = generate_answer(question, context)
+                
+                st.subheader("💬 Answer")
+                st.write(answer)
+                st.success("✅ Grounded in context")
+                
+                with st.expander("📄 Sources"):
+                    for i, doc in enumerate(relevant_docs, 1):
+                        st.markdown(f"**Source {i}:**")
+                        st.text(doc[:300] + "...")
+            except Exception as e:
+                st.error(f"Search failed: {e}")
     else:
         st.warning("Please enter a question")
