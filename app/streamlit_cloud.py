@@ -23,8 +23,13 @@ if not pinecone_key:
 
 # Initialize clients
 client = OpenAI(api_key=openai_key)
-pc = Pinecone(api_key=pinecone_key)
-index = pc.Index("doc-intelligence")
+
+try:
+    pc = Pinecone(api_key=pinecone_key)
+    index = pc.Index("doc-intelligence")
+except Exception as e:
+    st.error(f"Pinecone connection failed: {e}")
+    st.stop()
 
 # Sample documents
 DOCUMENTS = {
@@ -112,7 +117,6 @@ st.sidebar.markdown("""
 - What is Acme's revenue breakdown?
 - How much does Nexus GPU8 cost?
 - What is DataFlow AI's LTV/CAC ratio?
-- What certifications does CloudScale have?
 """)
 
 st.sidebar.header("⚙️ Admin")
@@ -122,11 +126,7 @@ if st.sidebar.button("🔄 Re-index Documents"):
         st.sidebar.success(f"Indexed {count} documents")
 
 st.sidebar.header("ℹ️ About")
-st.sidebar.markdown("""
-RAG system with Pinecone vector search.
-
-[GitHub](https://github.com/SAMithila/doc-intelligence)
-""")
+st.sidebar.markdown("[GitHub](https://github.com/SAMithila/doc-intelligence)")
 
 # Main content
 st.subheader("Ask a question:")
@@ -135,21 +135,17 @@ question = st.text_input("", placeholder="e.g., What is Acme's revenue breakdown
 if st.button("🔍 Search", type="primary"):
     if question:
         with st.spinner("Searching..."):
-            # Retrieve relevant documents
             relevant_docs = search(question, top_k=3)
             context = "\n\n".join(relevant_docs)
-            
-            # Generate answer
             answer = generate_answer(question, context)
             
             st.subheader("💬 Answer")
             st.write(answer)
             st.success("✅ Grounded in context")
             
-            # Show sources
             with st.expander("📄 Sources"):
                 for i, doc in enumerate(relevant_docs, 1):
                     st.markdown(f"**Source {i}:**")
-                    st.text(doc[:300] + "..." if len(doc) > 300 else doc)
+                    st.text(doc[:300] + "...")
     else:
         st.warning("Please enter a question")
